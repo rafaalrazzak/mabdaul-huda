@@ -1,0 +1,72 @@
+---
+import Button from "@/components/Button.astro";
+import Card from "@/components/Card.astro";
+import Layout from "@/layouts/Layout.astro";
+import Text from "@/components/Text.astro";
+
+import { kegiatan, targets } from "@/constants";
+import Link from "@/components/Link.astro";
+---
+
+<Layout title="SMP Plus Mabdaul Huda">
+  <main class="container flex flex-col gap-12">
+    <section
+      class="container flex max-w-[64rem] min-h-screen justify-center flex-col items-center gap-5 text-center"
+    >
+      <div class="flex flex-col">
+        <Text variant="h1" as="h1">
+          Menyemai Adab Millennial melalui
+          <Text variant="h1" as="span" color="gradient"
+            >SMP Plus Mabdaul Huda</Text
+          >
+        </Text>
+      </div>
+      <Text variant="h5" color="mutedForeground">
+        Membentuk Generasi Ulul Albab yang Tafaqquh Fid Din
+      </Text>
+
+      <Link href="#kontak" size="fit" variant="dark">Daftar Sekarang</Link>
+    </section>
+
+    <section class="flex flex-col justify-between gap-4" id="tentang">
+      <Card
+        title="Konsep Pendidikan"
+        subtitle="Tentang Kami"
+        content="SMP Plus Mabdaul Huda memadukan Konsep Pendidikan Nasional (DIKNAS) dan Pendidikan Pesantren Modern, sebagai solusi pendidikan ADAB dan KARAKTER di Indonesia yang mamasuki era Millenial."
+      />
+
+      <div class="grid gap-4 md:grid-cols-3">
+        {
+          targets.map(({ title, description }, i) => (
+            <Card
+              title={title}
+              content={description}
+              className={i === targets.length - 1 ? "md:col-span-3" : ""}
+            />
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="grid gap-4 md:grid-cols-3" id="kegiatan">
+      {
+        kegiatan.map(({ title, image }, i) => (
+          <Card subtitle="Kegiatan" image={image} title={title} />
+        ))
+      }
+    </section>
+
+    <section id="kontak">
+      <Card
+        title="Hubungi Kami"
+        subtitle="Kontak"
+        content="Bingung? Tanya kami!"
+        className="flex-row flex justify-between items-center"
+      >
+        <Link href="https://wa.link/512u53" size="fit" variant="dark"
+          >Hubungi Kami</Link
+        >
+      </Card>
+    </section>
+  </main>
+</Layout>

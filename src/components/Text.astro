@@ -1,0 +1,47 @@
+---
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+
+export interface TextProps
+  extends HTMLElement,
+    VariantProps<typeof textVariants> {
+  as?: HTMLAllCollection;
+}
+
+const textVariants = cva("", {
+  variants: {
+    variant: {
+      h1: "font-heading text-4xl font-semibold sm:text-5xl md:text-6xl !leading-[1.1] text-balance",
+      h2: "font-heading text-3xl font-semibold sm:text-4xl md:text-5xl !leading-[1.1] text-balance",
+      h3: "text-2xl font-semibold sm:text-3xl",
+      h4: "text-xl font-semibold sm:text-2xl",
+      h5: "text-lg sm:text-xl",
+      p: "text-base",
+    },
+    color: {
+      primary: "text-primary",
+      secondary: "text-secondary",
+      secondaryForeground: "text-secondary-foreground",
+      foreground: "text-foreground",
+      muted: "text-muted",
+      mutedForeground: "text-muted-foreground",
+      white: "text-white",
+      black: "text-black",
+      gradient:
+        "bg-gradient-to-br from-primary to-primary-secondary bg-clip-text text-transparent from-30% to-100%",
+    },
+  },
+  defaultVariants: {
+    variant: "p",
+    color: "black",
+  },
+});
+
+const { variant, color, className, as } = Astro.props as TextProps;
+
+const Element = as || "p";
+---
+
+<Element class={cn(textVariants({ variant, color, className }))}>
+  <slot />
+</Element>

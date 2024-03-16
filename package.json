@@ -1,0 +1,33 @@
+{
+  "name": "@kita/smp-plus-mabdaul-huda",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "prettier": "prettier --write . --plugin=prettier-plugin-astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.7",
+    "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/ts-plugin": "^1.5.3",
+    "@astrojs/vercel": "^7.3.6",
+    "@iconify-json/mdi": "^1.1.64",
+    "astro": "^4.5.1",
+    "astro-icon": "^1.1.0",
+    "astro-imagetools": "^0.9.0",
+    "astro-navbar": "^2.3.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.4.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0"
+  }
+}

@@ -1,0 +1,53 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import Text from "@/components/Text.astro";
+import { cn } from "@/lib/utils";
+
+interface Props extends HTMLAttributes<"div"> {
+  title?: string;
+  subtitle?: string;
+  content?: string;
+  image?: string; // New prop for image URL
+  className?: string;
+}
+
+const { title, subtitle, content, image, className, ...rest } = Astro.props;
+---
+
+<div
+  class={cn(
+    "relative bg-secondary rounded-xl  p-6 flex flex-col gap-2 overflow-hidden",
+    className,
+  )}
+  {...rest}
+>
+  {
+    image && (
+      <>
+        <div
+          class="absolute inset-0 bg-cover bg-center  z-0"
+          style={{ backgroundImage: `url('${image}')` }}
+        />
+        <div class="absolute inset-0 bg-gradient-to-l to-80% from-transparent to-secondary z-1" />
+      </>
+    )
+  }
+  <div class="flex flex-col gap-1">
+    <div class="flex flex-col gap-2 relative z-10">
+      {subtitle && <Text as="h3" color="secondaryForeground">{subtitle}</Text>}
+      {title && <Text as="h2" variant="h4">{title}</Text>}
+    </div>
+    {
+      content && (
+        <Text
+          color="secondaryForeground"
+          className="leading-relaxed text-balance z-10"
+        >
+          {content}
+        </Text>
+      )
+    }
+  </div>
+
+  <slot />
+</div>

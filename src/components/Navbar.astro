@@ -1,0 +1,42 @@
+---
+import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+
+import Image from "astro/components/Image.astro";
+import Text from "./Text.astro";
+import { navbar } from "@/constants";
+import Link from "./Link.astro";
+---
+
+<header
+  class="lg:flex justify-between items-center w-full p-3 gap-5 fixed left-0 z-[100] lg:bg-transparent"
+>
+  <Astronav>
+    <div class="flex justify-between">
+      <Image
+        width={40}
+        height={40}
+        src="/logo.png"
+        alt="logo"
+        class="size-30"
+      />
+      <div class="block lg:hidden">
+        <MenuIcon class="w-8 h-8 text-gray-800" />
+      </div>
+    </div>
+    <MenuItems class="hidden lg:flex">
+      <ul class="flex w-full justify-end items-end">
+        <div
+          class="border px-8 py-2 flex flex-col gap-2 border-secondary bg-white rounded-xl lg:flex-row lg:bg-transparent lg:border-0 lg:gap-5"
+        >
+          {
+            navbar.map((item) => (
+              <Link href={item.url} class="cursor-pointer" variant="link">
+                <Text class="text-gray-800">{item.title}</Text>
+              </Link>
+            ))
+          }
+        </div>
+      </ul>
+    </MenuItems>
+  </Astronav>
+</header>

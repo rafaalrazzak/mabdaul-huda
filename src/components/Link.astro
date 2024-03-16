@@ -1,0 +1,66 @@
+---
+import Button, { buttonVariants } from "./Button.astro";
+
+import type { HTMLAttributes } from "astro/types";
+import { type VariantProps } from "class-variance-authority";
+
+export interface LinkProps
+  extends HTMLAttributes<"a">,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
+}
+
+const {
+  href: rawHref,
+  style,
+  variant,
+  size,
+  class: className,
+  ...attrs
+} = Astro.props as LinkProps;
+const href = (rawHref instanceof URL ? rawHref.toString() : rawHref) ?? "";
+const site = Astro.site;
+const { pathname } = Astro.url;
+
+function isActiveLink(url: string): boolean {
+  return url === pathname || url === "." || url === "./";
+}
+
+function isExternalLink(url: string): boolean {
+  return URL.canParse(url);
+}
+
+function isInternalLink(url: string): boolean {
+  return URL.canParse(url, site?.toString());
+}
+
+function isSpecialLink(url: string): boolean {
+  return (
+    url.startsWith("mailto:") ||
+    url.startsWith("tel:") ||
+    url.startsWith("sms:") ||
+    url.startsWith("#")
+  );
+}
+
+const isExternal = isExternalLink(href);
+const isInternal = isInternalLink(href);
+const isSpecial = isSpecialLink(href);
+const isActive = isActiveLink(href);
+
+let relAttribute: object = {};
+
+if (isExternal && !isSpecial) {
+  relAttribute = { rel: "external noopener noreferrer" };
+} else if (isInternal && !isSpecial && !isActive) {
+  relAttribute = { rel: "prefetch" };
+} else {
+  relAttribute = {};
+}
+---
+
+<a href={href} class:list={[{ active: isActive }]} {...relAttribute} {...attrs}>
+  <Button variant={variant} size={size} className={className}>
+    <slot />
+  </Button>
+</a>
