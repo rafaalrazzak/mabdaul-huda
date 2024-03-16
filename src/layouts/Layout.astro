@@ -21,15 +21,27 @@ const { title } = Astro.props;
     <meta name="keywords" content={og.keywords} />
     <meta property="og:title" content={og.title} />
     <meta property="og:url" content={og.url} />
-    <meta
-      property="og:image"
-      content={og.image}
-    />
+    <meta property="og:image" content={og.image} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" href="logo.png" sizes="16x16 32x32" type="image/png" />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      type="text/partytown"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-43NNZ0XZPK"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-43NNZ0XZPK");
+    </script>
   </head>
-  <body class="pb-12 relative max-w-5xl mx-auto flex flex-col gap-12">
+  <body class="relative max-w-5xl mx-auto flex flex-col gap-12">
     <Navbar />
     <slot />
     <Footer />
