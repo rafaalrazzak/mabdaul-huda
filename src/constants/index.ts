@@ -104,3 +104,13 @@ export const navbar = [
     url: "#kontak",
   },
 ];
+
+export const og = {
+  title: "SMP Plus Mabdaul Huda",
+  description:
+    "SMP Plus Mabdaul Huda memadukan Konsep Pendidikan Nasional (DIKNAS) dan Pendidikan Pesantren Modern, sebagai solusi pendidikan ADAB dan KARAKTER di Indonesia yang mamasuki era Millenial.",
+  url: "https://mabdaul.kita.blue",
+  image: "https://cdn.kita.blue/mabdaul/og.png",
+  keywords:
+    "SMP Plus Mabdaul Huda, SMP Plus, Mabdaul Huda, SMP, Plus, Mabdaul, Huda, SMP Mabdaul Huda, Mabdaul Huda, Pesatuan Islam, Persis, Pesantren, Modern, Pesantren Modern, Pesantren Modern, Citeureup, Puspasari, Citeureup, Bogor, Jawa Barat, Indonesia, Pendidikan, Pendidikan Nasional, Pendidikan Pesantren, Pendidikan Pesantren Modern, Pendidikan ADAB, Pendidikan Karakter, Pendidikan Islam",
+};
