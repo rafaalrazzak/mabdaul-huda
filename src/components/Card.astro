@@ -34,8 +34,20 @@ const { title, subtitle, content, image, className, ...rest } = Astro.props;
   }
   <div class="flex flex-col gap-1">
     <div class="flex flex-col gap-2 relative z-10">
-      {subtitle && <Text as="h3" color="secondaryForeground">{subtitle}</Text>}
-      {title && <Text as="h2" variant="h4">{title}</Text>}
+      {
+        subtitle && (
+          <Text as="h3" color="secondaryForeground">
+            {subtitle}
+          </Text>
+        )
+      }
+      {
+        title && (
+          <Text as="h2" variant="h4">
+            {title}
+          </Text>
+        )
+      }
     </div>
     {
       content && (
